@@ -1,0 +1,42 @@
+def calcular_notas():
+    notas = []
+
+    try:
+        while True:
+            try:
+                nota = float(input("Digite uma nota (aperte -1 para finalizar): "))
+                if nota == -1:
+                    break
+                notas.append(nota)
+            except ValueError:
+                print("Entrada inválida. Por favor, digite um número.")
+    except KeyboardInterrupt:
+        print("\nEntrada de notas interrompida pelo usuário.")
+        return [] # Return an empty list if interrupted
+
+    return notas
+
+def calcular_media(notas):
+    if len(notas) == 0:
+        return 0
+    return sum(notas) / len(notas)
+
+def verificacao_das_notas(media):
+    if media >= 7:
+        return "Aprovado"
+    elif media >= 5:
+        return "Recuperação"
+    else:
+        return "Reprovado"
+
+def Resultado(notas, media, relatorio):
+    print("relatorio finalizado")
+    print("As notas do aluno são:", notas)
+    print("A média do aluno é", media)
+    print("A situação do aluno é", relatorio)
+
+# To execute the code, you need to call the functions
+notas = calcular_notas()
+media = calcular_media(notas)
+relatorio = verificacao_das_notas(media)
+Resultado(notas, media, relatorio)
